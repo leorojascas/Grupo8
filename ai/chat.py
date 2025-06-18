@@ -59,12 +59,12 @@ def generate_text(prompt, chat_id):
 
                 # Generar nuevo mensaje a OpenAI con la predicción
                 if predict_result:
-                    interpret_prompt = f"""Con base en estos datos clínicos:
+                    interpret_prompt = f"""Con base en estos datos agronómicos:
 {json.dumps(params, indent=2)}
-y este resultado de predicción:
+y este resultado de recomendación:
 {json.dumps(predict_result, indent=2)}
 
-genera una explicación amigable para el paciente. Usa emojis, un tono positivo y claro."""
+genera una explicación amigable para el agrónomo. Usa un tono científico positivo y claro."""
                     
                     final_response = generate_final_output(interpret_prompt, chat_id)
 
@@ -91,7 +91,7 @@ genera una explicación amigable para el paciente. Usa emojis, un tono positivo 
 
 
 def hacer_prediccion_si_hay_datos(params):
-    campos = ["Age", "RestingBP", "Cholesterol", "Oldpeak", "FastingBS", "MaxHR"]
+    campos = ["Tipo de Cultivo", "Tipo de Suelo", " Nivel de Fosforo", "Nivel de Potasio", "Nivel de Calcio", "MaxHR"]
     if not all(k in params for k in campos):
         return None
 
@@ -112,7 +112,7 @@ def generate_final_output(text_prompt, chat_id):
     client = OpenAI(api_key=config.gpt_key)
 
     messages = [
-        {"role": "system", "content": "Eres un agente médico amable y claro. Usa emojis y un tono positivo."},
+        {"role": "system", "content": "Eres un agente experto en nutrición vegetal agronomica, tu objetivo es entregar recomendaciones de fertilizantes primarios y secundarios para diversos cultivos como maiz, tomate, paltas, limones, etc.."},
         {"role": "user", "content": text_prompt}
     ]
 
