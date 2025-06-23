@@ -5,11 +5,11 @@ graph TD
     ChatInterface --> ChatLogic[chat.py]
     ChatLogic[chat.py] -->|Procesamiento API| AIAssistant[Asistente IA]
     AIAssistant[Asistente IA] --> EntryPoint[main.py]
-    EntryPoint[main.py] --> AILogic[aichat.py]
-    AILogic[aichat.py] --> AppConfig[config.py]
-    AILogic[aichat.py] --> VectorProcessor[vector.py]
-    AILogic[aichat.py] --> SQLModule[sql.py]
-    AILogic[aichat.py] -->|Preparación de Recomenciones y Chat Conversacional| OpenAI[GPT4o]
+    EntryPoint[main.py] --> AILogic[ai/chat.py]
+    AILogic[ai/chat.py] --> AppConfig[config.py]
+    AILogic[ai/chat.py] --> VectorProcessor[vector.py]
+    AILogic[ai/chat.py] --> SQLModule[sql.py]
+    AILogic[ai/chat.py] -->|Preparación de Recomenciones y Chat Conversacional| OpenAI[GPT4o]
 
     %% Subgraphs
     subgraph Aplicación Principal
