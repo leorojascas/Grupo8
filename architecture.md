@@ -1,8 +1,11 @@
 ```mermaid
 graph TD
     %% Nodes
-    User[Usuario] -->|Consultas| ChatLogic[chat.py]
-    ChatLogic -->|Procesamiento| AIAssistant[Asistente IA]
+    User[Usuario] -->|Consultas| ChatInterface
+    ChatLogic[chat.py] -->|Procesamiento API| AIAssistant[Asistente IA]
+    AIAssistant --> EntryPoint[main.py]
+    EntryPoint --> AILogic [ai/chat.py]
+    AILogic --> AppConfig[config.py]
 
     %% Subgraphs
     subgraph Aplicación Principal
