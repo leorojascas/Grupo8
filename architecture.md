@@ -7,6 +7,8 @@ graph TD
     AIAssistant[Asistente IA] --> EntryPoint[main.py]
     EntryPoint[main.py] --> AILogic[aichat.py]
     AILogic[aichat.py] --> AppConfig[config.py]
+    AILogic[aichat.py] --> VectorProcessor[vector.py]
+    AILogic[aichat.py] --> SQLModule[sql.py]
 
     %% Subgraphs
     subgraph Aplicación Principal
@@ -22,10 +24,9 @@ graph TD
     end
 
     %% Database Details
-    SQLModule -->|Información Nutricional| Config[base_grupo8.db]
-    VectorProcessor -->|Historial y Feedback| Confíg[base_vectorial_Redis]
-    AILogic[aichat.py] --> VectorProcessor
-    AILogic[aichat.py] --> SQLModule
+    SQLModule[sql.py] -->|Información Nutricional| Config[base_grupo8.db]
+    VectorProcessor[vector.py] -->|Historial y Feedback| Confíg[base_vectorial_Redis]
+
 
     %% Deployment
     subgraph Despliegue
@@ -41,7 +42,7 @@ graph TD
     classDef deployment fill:#fbb,stroke:#333,stroke-width:2px
 
     class User,ChatInterface,AIAssistant,EntryPoint,AppConfig primary
-    class Database,NutrientAnalysis,SQLModule,VectorProcessor data
+    class SQLModule,VectorProcessor data
     class Heroku,Procfile,Runtime deployment
 
     %% Legend
@@ -59,6 +60,5 @@ graph TD
     %% Connections
     style User fill:#f9f,stroke:#333,stroke-width:4px
     style ChatInterface fill:#bbf,stroke:#333,stroke-width:4px
-    style Database fill:#bfb,stroke:#333,stroke-width:4px
     style Heroku fill:#fbb,stroke:#333,stroke-width:4px
 ```
