@@ -18,7 +18,6 @@ graph TD
 
     subgraph Componentes de Datos
         Database
-        NutrientAnalysis
         SQLModule[sql.py]
         VectorProcessor[vector.py]
     end
