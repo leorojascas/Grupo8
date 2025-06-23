@@ -27,15 +27,8 @@ graph TD
     Database -->|Información Nutricional| Config[base_grupo8.db]
     SQLModule --> Database
     VectorProcessor --> |Historial y Feedback| Confíg[base_vectorial_Redis]
-    AILogic --> VectorProcessor
-    AILogic --> SQLModule
-
-    %% AI Components
-    AIAssistant -->|Procesamiento IA| AILogic[ai/chat.py]
-
-    %% Entry point y configuración
-    EntryPoint --> ChatInterface
-    AppConfig --> AIAssistant
+    AILogic[aichat.py] --> VectorProcessor
+    AILogic[aichat.py] --> SQLModule
 
     %% Deployment
     subgraph Despliegue
