@@ -26,7 +26,7 @@ graph TD
     %% Database Details
     Database -->|Información Nutricional| Config[base_grupo8.db]
     SQLModule --> Database
-    VectorProcessor --> |Historial y Feedback| Confíg[base_vectorial_Redis]
+    VectorProcessor -->|Historial y Feedback| Confíg[base_vectorial_Redis]
     AILogic[aichat.py] --> VectorProcessor
     AILogic[aichat.py] --> SQLModule
 
