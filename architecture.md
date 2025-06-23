@@ -4,7 +4,7 @@ graph TD
     User[Usuario] -->|Consultas| ChatInterface
     ChatLogic[chat.py] -->|Procesamiento API| AIAssistant[Asistente IA]
     AIAssistant --> EntryPoint[main.py]
-    EntryPoint --> AILogic [ai->chat.py]
+    EntryPoint --> AILogic [ai-chat.py]
     AILogic --> AppConfig[config.py]
 
     %% Subgraphs
