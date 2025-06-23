@@ -5,44 +5,52 @@ graph TD
     ChatInterface -->|Procesamiento| AIAssistant[Asistente IA]
     AIAssistant -->|Base de Datos| Database[Base de Datos]
     AIAssistant -->|Análisis Nutricional| NutrientAnalysis[Análisis Nutricional]
-    
+
     %% Subgraphs
     subgraph Aplicación Principal
         ChatInterface
         AIAssistant
+        EntryPoint[main.py]
+        AppConfig[config.py]
     end
-    
+
     subgraph Componentes de Datos
         Database
         NutrientAnalysis
+        SQLModule[sql.py]
+        VectorProcessor[vector.py]
     end
-    
+
     %% Database Details
-    Database -->|Suelos Globales| SoilData[TIPO_SUELOS_GLOBALES.csv]
-    Database -->|Nutrientes| NutrientData[base_nutricional_cultivos_top30.csv]
     Database -->|Configuración| Config[base_grupo8.db]
-    
+    SQLModule --> Database
+    VectorProcessor --> AILogic
+
     %% AI Components
     AIAssistant -->|Conversación| ChatLogic[chat.py]
     AIAssistant -->|Procesamiento IA| AILogic[ai/chat.py]
-    
+
+    %% Entry point y configuración
+    EntryPoint --> ChatInterface
+    AppConfig --> AIAssistant
+
     %% Deployment
     subgraph Despliegue
         Heroku[Heroku]
         Procfile[Procfile]
         Runtime[runtime.txt]
     end
-    
+
     %% Styling
     classDef default fill:#f9f,stroke:#333,stroke-width:2px
     classDef primary fill:#bbf,stroke:#333,stroke-width:2px
     classDef data fill:#bfb,stroke:#333,stroke-width:2px
     classDef deployment fill:#fbb,stroke:#333,stroke-width:2px
-    
-    class User,ChatInterface,AIAssistant primary
-    class Database,NutrientAnalysis data
+
+    class User,ChatInterface,AIAssistant,EntryPoint,AppConfig primary
+    class Database,NutrientAnalysis,SQLModule,VectorProcessor data
     class Heroku,Procfile,Runtime deployment
-    
+
     %% Legend
     subgraph Leyenda
         direction TB
@@ -50,11 +58,11 @@ graph TD
         Data[Componentes de Datos]
         Deployment[Componentes de Despliegue]
     end
-    
+
     class Primary primary
     class Data data
     class Deployment deployment
-    
+
     %% Connections
     style User fill:#f9f,stroke:#333,stroke-width:4px
     style ChatInterface fill:#bbf,stroke:#333,stroke-width:4px
