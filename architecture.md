@@ -17,7 +17,6 @@ graph TD
     end
 
     subgraph Componentes de Datos
-        Database
         SQLModule[sql.py]
         VectorProcessor[vector.py]
     end
