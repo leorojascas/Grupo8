@@ -26,10 +26,11 @@ graph TD
     SQLModule --> Database
     VectorProcessor --> |Historial y Feedback| Confíg[base_vectorial_Redis]
     AILogic --> VectorProcessor
+    AILogic --> SQLModule
 
     %% AI Components
     AIAssistant -->|Conversación| ChatLogic[chat.py]
-    AIAssistant -->|Procesamiento IA| AILogic[ai/chat.py]
+    ChatLogic -->|Procesamiento IA| AILogic[ai/chat.py]
 
     %% Entry point y configuración
     EntryPoint --> ChatInterface
