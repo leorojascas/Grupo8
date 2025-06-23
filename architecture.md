@@ -9,6 +9,7 @@ graph TD
     AILogic[aichat.py] --> AppConfig[config.py]
     AILogic[aichat.py] --> VectorProcessor[vector.py]
     AILogic[aichat.py] --> SQLModule[sql.py]
+    AILogic[aichat.py] -->|Preparación de Recomenciones y Chat Conversacional| OpenAI[GPT4o]
 
     %% Subgraphs
     subgraph Aplicación Principal
@@ -21,6 +22,10 @@ graph TD
     subgraph Componentes de Datos
         SQLModule[sql.py]
         VectorProcessor[vector.py]
+    end
+
+    subgraph Modelos IA
+        OpenAI[GPT4o]
     end
 
     %% Database Details
