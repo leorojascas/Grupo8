@@ -41,10 +41,11 @@ graph TD
     end
 
     %% Styling
-    classDef default fill:#f9f,stroke:#333,stroke-width:2px
-    classDef primary fill:#bbf,stroke:#333,stroke-width:2px
-    classDef data fill:#bfb,stroke:#333,stroke-width:2px
-    classDef deployment fill:#fbb,stroke:#333,stroke-width:2px
+    classDef default fill:#ffffff,stroke:#333333,stroke-width:2px,color:#000000
+    classDef primary fill:#e6f0ff,stroke:#003366,stroke-width:2px,color:#000000
+    classDef data fill:#e6ffe6,stroke:#006600,stroke-width:2px,color:#000000
+    classDef deployment fill:#e6e6ff,stroke:#000080,stroke-width:2px,color:#000000
+    classDef model fill:#fff0e6,stroke:#cc6600,stroke-width:2px,color:#000000
 
     class User,ChatInterface,AIAssistant,EntryPoint,AppConfig primary
     class SQLModule,VectorProcessor data
@@ -63,7 +64,5 @@ graph TD
     class Deployment deployment
 
     %% Connections
-    style User fill:#f9f,stroke:#333,stroke-width:4px
-    style ChatInterface fill:#bbf,stroke:#333,stroke-width:4px
-    style Heroku fill:#fbb,stroke:#333,stroke-width:4px
+    style User fill:#ffffff,stroke:#333333,stroke-width:3px,color:#000000
 ```
