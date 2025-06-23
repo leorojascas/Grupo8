@@ -22,7 +22,7 @@ graph TD
     end
 
     %% Database Details
-    Database -->|Configuración| Config[base_grupo8.db]
+    Database -->|Información Nutricional| Config[base_grupo8.db]
     SQLModule --> Database
     VectorProcessor --> AILogic
 
