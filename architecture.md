@@ -1,10 +1,8 @@
 ```mermaid
 graph TD
     %% Nodes
-    User[Usuario] -->|Consultas| ChatInterface[Interfaz Chat]
-    ChatInterface -->|Procesamiento| AIAssistant[Asistente IA]
-    AIAssistant -->|Base de Datos| Database[Base de Datos]
-    AIAssistant -->|Análisis Nutricional| NutrientAnalysis[Análisis Nutricional]
+    User[Usuario] -->|Consultas| ChatLogic[chat.py]
+    ChatLogic -->|Procesamiento| AIAssistant[Asistente IA]
 
     %% Subgraphs
     subgraph Aplicación Principal
@@ -29,8 +27,7 @@ graph TD
     AILogic --> SQLModule
 
     %% AI Components
-    AIAssistant -->|Conversación| ChatLogic[chat.py]
-    ChatLogic -->|Procesamiento IA| AILogic[ai/chat.py]
+    AIAssistant -->|Procesamiento IA| AILogic[ai/chat.py]
 
     %% Entry point y configuración
     EntryPoint --> ChatInterface
