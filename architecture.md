@@ -2,10 +2,11 @@
 graph TD
     %% Nodes
     User[Usuario] -->|Consultas| ChatInterface
+    ChatInterface --> ChatLogic[chat.py]
     ChatLogic[chat.py] -->|Procesamiento API| AIAssistant[Asistente IA]
-    AIAssistant --> EntryPoint[main.py]
-    EntryPoint --> AILogic[aichat.py]
-    AILogic --> AppConfig[config.py]
+    AIAssistant[Asistente IA] --> EntryPoint[main.py]
+    EntryPoint[main.py] --> AILogic[aichat.py]
+    AILogic[aichat.py] --> AppConfig[config.py]
 
     %% Subgraphs
     subgraph Aplicación Principal
